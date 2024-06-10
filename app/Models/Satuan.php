@@ -12,4 +12,9 @@ class Satuan extends Model
     protected $fillable = [
         'name'
     ];
+
+    public function produks()
+    {
+        return $this->hasMany(Produk::class);
+    }
 }

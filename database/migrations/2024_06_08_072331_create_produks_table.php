@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('produks', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->float('harga');
+            $table->integer('stock')->default(0);
+            $table->unsignedInteger('satuan_id');
+            $table->string('deskripsi');
+            $table->enum('is_active', ['true', 'false'])->default('true');
             $table->timestamps();
         });
     }

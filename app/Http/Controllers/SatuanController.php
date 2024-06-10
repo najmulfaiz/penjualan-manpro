@@ -84,4 +84,20 @@ class SatuanController extends Controller
             'message' => 'Satuan berhasil di hapus.'
         ]);
     }
+
+    public function select2(Request $request)
+    {
+        $satuans = Satuan::all();
+
+        $data = [];
+        foreach($satuans->sortBy('name') as $satuan)
+        {
+            $data[] = [
+                'id' => $satuan->id,
+                'text' => $satuan->name
+            ];
+        }
+
+        return response()->json($data);
+    }
 }

@@ -24,6 +24,9 @@
 <!-- toastr plugin -->
 <script src="<?php echo e(URL::asset('build/libs/toastr/build/toastr.min.js')); ?>"></script>
 
+<!-- select2 -->
+<script src="<?php echo e(URL::asset('build/libs/select2/js/select2.min.js')); ?>"></script>
+
 <script>
     $.ajaxSetup({
         headers: {

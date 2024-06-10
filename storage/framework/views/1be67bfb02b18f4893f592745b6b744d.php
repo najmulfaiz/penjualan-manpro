@@ -22,7 +22,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="<?php echo e(route('satuan.index')); ?>" key="t-satuan">Satuan</a></li>
-                        <li><a href="auth-login" key="t-produk">Produk</a></li>
+                        <li><a href="<?php echo e(route('produk.index')); ?>" key="t-produk">Produk</a></li>
                         <li><a href="<?php echo e(route('supplier.index')); ?>" key="t-supplier">Supplier</a></li>
                     </ul>
                 </li>
