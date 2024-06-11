@@ -27,7 +27,7 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="{{ route('home.index') }}" class="waves-effect">
+                    <a href="{{ route('pembelian.index') }}" class="waves-effect">
                         <i class="bx bx-cart-alt"></i>
                         <span key="t-pembelian">Pembelian</span>
                     </a>

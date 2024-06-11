@@ -93,4 +93,20 @@ class SupplierController extends Controller
             'message' => 'Supplier berhasil di hapus.'
         ]);
     }
+
+    public function select2(Request $request)
+    {
+        $suppliers = Supplier::all();
+
+        $data = [];
+        foreach($suppliers->sortBy('name') as $supplier)
+        {
+            $data[] = [
+                'id' => $supplier->id,
+                'text' => $supplier->name
+            ];
+        }
+
+        return response()->json($data);
+    }
 }

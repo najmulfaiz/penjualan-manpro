@@ -13,7 +13,7 @@
 </head>
 
 @section('body')
-    <body data-sidebar="dark" data-layout-mode="light">
+    <body data-sidebar="dark" data-layout-mode="light" class="{{ isset($sidebar_collapse) && $sidebar_collapse == true ? 'sidebar-enable vertical-collpsed' : '' }}">
 @show
     <!-- Begin page -->
     <div id="layout-wrapper">

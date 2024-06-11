@@ -18,7 +18,8 @@ class ProdukController extends Controller
                                     return $produk->is_active == 'true' ? '<i class="bx bx-check-circle text-success fs-4"></i>' : '<i class="bx bx-x-circle text-danger fs-4"></i>';
                                 })
                                 ->addColumn('aksi', function(Produk $produk) {
-                                    return '<a href="' . route('produk.edit', $produk->id) . '" class="btn btn-warning btn-sm"><i class="bx bx-edit"></i></a>
+                                    return '<a href="' . route('produk.show', $produk->id) . '" class="btn btn-primary btn-sm"><i class="bx bx-detail"></i></a>
+                                            <a href="' . route('produk.edit', $produk->id) . '" class="btn btn-warning btn-sm"><i class="bx bx-edit"></i></a>
                                             <button class="btn btn-danger btn-sm btn_delete" data-id="' . $produk->id . '"><i class="bx bx-trash"></i></button>';
                                 })
                                 ->rawColumns(['status', 'aksi'])
@@ -35,7 +36,6 @@ class ProdukController extends Controller
 
     public function store(Request $request)
     {
-        return $request->has('is_active') && $request->is_active == 'true' ? 'true' : 'false';
         $request->validate([
             'name' => 'required|string',
             'harga' => 'required|numeric',
@@ -62,7 +62,7 @@ class ProdukController extends Controller
 
     public function show(Produk $produk)
     {
-        return $produk;
+        return view('pages.produk.show', compact('produk'));
     }
 
     public function edit(Produk $produk)
@@ -108,5 +108,22 @@ class ProdukController extends Controller
             'isError' => false,
             'message' => 'Produk berhasil di hapus.'
         ]);
+    }
+
+    public function select2(Request $request)
+    {
+        $produks = Produk::all();
+
+        $data = [];
+        foreach($produks->sortBy('name') as $produk)
+        {
+            $data[] = [
+                'id' => $produk->id,
+                'text' => $produk->name,
+                'data' => $produk
+            ];
+        }
+
+        return response()->json($data);
     }
 }
