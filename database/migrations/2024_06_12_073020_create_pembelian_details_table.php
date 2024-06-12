@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('pembelian_id');
             $table->integer('produk_id');
-            $table->float('harga');
+            $table->double('harga');
             $table->float('qty');
             $table->float('diskon_persen')->nullable();
             $table->double('diskon_rupiah')->nullable();
