@@ -3,21 +3,21 @@
         <div class="d-flex">
             <!-- LOGO -->
             <div class="navbar-brand-box">
-                <a href="index" class="logo logo-dark">
-                    <span class="logo-sm">
-                        <img src="{{ URL::asset('build/images/logo.svg') }}" alt="" height="22">
+                <a href="{{ route('home.index') }}" class="logo logo-dark">
+                    <span class="logo-sm text-white fs-3">
+                        {{-- {{ strtoupper(config('app.name')) }} --}}
                     </span>
-                    <span class="logo-lg">
-                        <img src="{{ URL::asset('build/images/logo-dark.png') }}" alt="" height="17">
+                    <span class="logo-lg text-white fs-3">
+                        {{ strtoupper(config('app.name')) }}
                     </span>
                 </a>
 
-                <a href="index" class="logo logo-light">
-                    <span class="logo-sm">
-                        <img src="{{ URL::asset('build/images/logo-light.svg') }}" alt="" height="22">
+                <a href="{{ route('home.index') }}" class="logo logo-light">
+                    <span class="logo-sm text-white fs-3">
+                        {{-- {{ strtoupper(config('app.name')) }} --}}
                     </span>
-                    <span class="logo-lg">
-                        <img src="{{ URL::asset('build/images/logo-light.png') }}" alt="" height="19">
+                    <span class="logo-lg text-white fs-3">
+                        {{ strtoupper(config('app.name')) }}
                     </span>
                 </a>
             </div>

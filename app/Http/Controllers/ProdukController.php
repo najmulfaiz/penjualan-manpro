@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produk;
+use App\Models\Stok;
 use Illuminate\Http\Request;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -48,12 +49,22 @@ class ProdukController extends Controller
         $produk = new Produk;
         $produk->name      = $request->name;
         $produk->harga     = $request->harga;
-        $produk->stock     = $request->stock;
+        // $produk->stock     = $request->stock;
         $produk->satuan_id = $request->satuan;
         $produk->deskripsi = $request->deskripsi;
         $produk->is_active = $request->has('is_active') && $request->is_active == 'true' ? 'true' : 'false';
 
         if(!$produk->save()) {
+            return redirect()->back()->withError('Produk gagal di simpan.');
+        }
+
+        $stok               = new Stok;
+        $stok->transaksi_id = $produk->id;
+        $stok->transaksi    = 'INIT';
+        $stok->produk_id    = $produk->id;
+        $stok->masuk        = $request->stock;
+
+        if(!$stok->save()) {
             return redirect()->back()->withError('Produk gagal di simpan.');
         }
 

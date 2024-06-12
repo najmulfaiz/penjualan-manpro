@@ -33,10 +33,19 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{ route('home.index') }}" class="waves-effect">
+                    <a href="{{ route('penjualan.index') }}" class="waves-effect">
                         <i class="bx bx-money"></i>
                         <span key="t-penjualan">Penjualan</span>
                     </a>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="bx bx-file"></i>
+                        <span key="t-laporan">Laporan</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('arus_stok.index') }}" key="t-arus-stok">Arus Stok</a></li>
+                    </ul>
                 </li>
             </ul>
         </div>

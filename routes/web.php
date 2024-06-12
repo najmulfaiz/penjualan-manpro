@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArusStokController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PembelianController;
+use App\Http\Controllers\PenjualanController;
 use App\Http\Controllers\ProdukController;
 use App\Http\Controllers\SatuanController;
 use App\Http\Controllers\SupplierController;
@@ -25,4 +27,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('produk', ProdukController::class);
 
     Route::resource('pembelian', PembelianController::class)->except(['show']);
+    Route::resource('penjualan', PenjualanController::class)->except(['show']);
+
+    Route::resource('arus_stok', ArusStokController::class)->only(['index']);
 });

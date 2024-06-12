@@ -71,8 +71,8 @@ var produkDatatable = $('#produkDatatable').DataTable({
                 defaultContent: '-'
             },
             {
-                data: 'stock',
-                name: 'stock',
+                data: 'sisa_stok',
+                name: 'sisa_stok',
                 defaultContent: '-'
             },
             {

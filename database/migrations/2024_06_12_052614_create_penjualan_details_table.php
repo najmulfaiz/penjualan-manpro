@@ -11,15 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pembelians', function (Blueprint $table) {
+        Schema::create('penjualan_details', function (Blueprint $table) {
             $table->id();
-            $table->string('faktur');
-            $table->date('tanggal_faktur');
-            $table->integer('supplier');
-            $table->date('jatuh_tempo');
-            $table->float('ppn')->nullable();
-            $table->float('diskon_persen')->nullable();
-            $table->double('diskon_rupiah')->nullable();
+            $table->integer('penjualan_id');
+            $table->integer('produk_id');
+            $table->float('qty');
+            $table->double('harga');
             $table->double('total');
             $table->timestamps();
         });
@@ -30,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pembelians');
+        Schema::dropIfExists('penjualan_details');
     }
 };

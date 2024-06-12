@@ -1,12 +1,12 @@
 @extends('layouts.master')
 
-@section('title') Pembelian @endsection
+@section('title') Penjualan @endsection
 
 @section('content')
 
     @component('components.breadcrumb')
-        @slot('li_1') Pembelian @endslot
-        @slot('title') Pembelian @endslot
+        @slot('li_1') Penjualan @endslot
+        @slot('title') Penjualan @endslot
     @endcomponent
 
     @include('layouts.alert')
@@ -15,18 +15,19 @@
         <div class="col-lg-12">
             <div class="card">
                 <div class="card-header">
-                    <a href="{{ route('pembelian.create') }}" class="btn btn-primary btn-sm waves-effect btn-label waves-light">
+                    <a href="{{ route('penjualan.create') }}" class="btn btn-primary btn-sm waves-effect btn-label waves-light">
                         <i class="bx bx-plus label-icon"></i> Tambah
                     </a>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-nowrap mb-0" id="pembelianDatatable">
+                        <table class="table table-nowrap mb-0" id="penjualanDatatable">
                             <thead class="table-light">
                                 <tr>
                                     <th>No</th>
                                     <th>Waktu</th>
                                     <th>Produk</th>
+                                    <th>Diskon</th>
                                     <th>Total</th>
                                     <th>Aksi</th>
                                 </tr>
@@ -44,11 +45,11 @@
 @section('script-bottom')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.30.1/moment-with-locales.min.js" integrity="sha512-4F1cxYdMiAW98oomSLaygEwmCnIP38pb4Kx70yQYqRwLVCs3DbRumfBq82T08g/4LJ/smbFGFpmeFlQgoDccgg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-var pembelianDatatable = $('#pembelianDatatable').DataTable({
+var penjualanDatatable = $('#penjualanDatatable').DataTable({
         processing: true,
         serverSide: true,
         ajax: {
-            url: '{{ route('pembelian.index') }}',
+            url: '{{ route('penjualan.index') }}',
             data: function(d) { }
         },
         columns: [
@@ -73,6 +74,14 @@ var pembelianDatatable = $('#pembelianDatatable').DataTable({
                 data: 'produk',
                 name: 'produk',
                 defaultContent: '-'
+            },
+            {
+                data: 'diskon_rupiah',
+                name: 'diskon_rupiah',
+                defaultContent: '-',
+                render: function ( data, type, full, meta ) {
+                    return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR' }).format(data);
+                }
             },
             {
                 data: 'total',
@@ -106,7 +115,7 @@ var pembelianDatatable = $('#pembelianDatatable').DataTable({
         }).then((result) => {
             if (result.value) {
                 $.ajax({
-                    url: '{{ url('pembelian') }}/' + id,
+                    url: '{{ url('penjualan') }}/' + id,
                     type: 'post',
                     data: {
                         _method: 'DELETE',
@@ -119,7 +128,7 @@ var pembelianDatatable = $('#pembelianDatatable').DataTable({
                             toastr['success'](res.message);
                         }
 
-                        pembelianDatatable.ajax.reload();
+                        penjualanDatatable.ajax.reload();
                     }
                 });
             }

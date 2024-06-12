@@ -11,14 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('produks', function (Blueprint $table) {
+        Schema::create('stoks', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->double('harga');
-            $table->integer('stock')->default(0);
-            $table->unsignedInteger('satuan_id');
-            $table->text('deskripsi');
-            $table->enum('is_active', ['true', 'false'])->default('true');
+            $table->integer('transaksi_id');
+            $table->enum('transaksi', ['INIT', 'PEMBELIAN', 'PENJUALAN']);
+            $table->integer('produk_id');
+            $table->double('masuk')->default(0);
+            $table->double('keluar')->default(0);
             $table->timestamps();
         });
     }
@@ -28,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('produks');
+        Schema::dropIfExists('stoks');
     }
 };

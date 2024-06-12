@@ -5,23 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Pembelian extends Model
+class Penjualan extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'faktur',
-        'tanggal_faktur',
-        'supplier',
-        'jatuh_tempo',
-        'ppn',
         'diskon_persen',
         'diskon_rupiah',
         'total',
     ];
 
-    public function pembelian_details()
+    public function penjualan_details()
     {
-        return $this->hasMany(PembelianDetail::class);
+        return $this->hasMany(PenjualanDetail::class);
     }
 }
